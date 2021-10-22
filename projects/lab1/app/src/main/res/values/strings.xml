@@ -4,7 +4,7 @@
     <string name="widget2">Press this Button</string>
     <string name="widget3">Do you see me?</string>
     <string name="widget4">image</string>
-    <string name="widget5">Edit this text</string>
+    <string name="widget5">Enter the number</string>
     <string name="choice1">choose this</string>
     <string name="choice2">oh, no, choose this</string>
     <string name="choice3">this is the best choice</string>
@@ -14,4 +14,5 @@
     <string name="str_4">4</string>
     <string name="str_5">5</string>
     <string name="str_6">6</string>
+    <string name="trash_bin">trash bin</string>
 </resources>
