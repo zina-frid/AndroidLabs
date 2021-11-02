@@ -1,6 +1,7 @@
 package ru.spbstu.icc.kspt.lab2.continuewatch
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -27,14 +28,29 @@ class MainActivity : AppCompatActivity() {
         backgroundThread.start()
     }
 
+    override fun onStart() {
+        Log.d("MainActivity", "onStart()")
+        active = true
+        Log.d("MainActivity", "Seconds = $secondsElapsed")
+        Log.d("MainActivity", "active == true")
+        super.onStart()
+    }
     override fun onStop() {
+        Log.d("MainActivity", "onStop()")
         active = false
+        Log.d("MainActivity", "Seconds = $secondsElapsed")
+        Log.d("MainActivity", "active == false")
         super.onStop()
     }
 
     override fun onResume() {
-        active = true
+        Log.d("MainActivity", "onResume()")
         super.onResume()
+
+    }
+    override fun onPause() {
+        Log.d("MainActivity", "onPause()")
+        super.onPause()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

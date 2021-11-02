@@ -25,7 +25,12 @@ class SecondFragment: Fragment() {
         }
 
         binding.bottomAbout.setOnNavigationItemSelectedListener {
-            (activity as MainActivity).toAboutAct(it)
+            when (it.itemId) {
+                R.id.about -> {
+                    navController.navigate(R.id.global_about)
+                }
+            }
+            false
         }
         return binding.root
     }

@@ -3,6 +3,7 @@ package ru.spbstu.icc.kspt.lab2.continuewatch
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -31,18 +32,35 @@ class MainActivity : AppCompatActivity() {
         backgroundThread.start()
     }
 
+    override fun onStart() {
+        Log.d("MainActivity", "onStart()")
+
+        super.onStart()
+    }
+
     override fun onStop() {
+        Log.d("MainActivity", "onStop()")
         active = false
         val editor = sharedPref.edit()
         editor.putInt(SECONDS, secondsElapsed)
         editor.apply()
+        Log.d("MainActivity", "Seconds = $secondsElapsed")
+        Log.d("MainActivity", "active == false")
         super.onStop()
     }
 
     override fun onResume() {
+        Log.d("MainActivity", "onResume()")
         active = true
         secondsElapsed = sharedPref.getInt(SECONDS, 0)
+        Log.d("MainActivity", "Seconds = $secondsElapsed")
+        Log.d("MainActivity", "active == true")
         super.onResume()
+    }
+
+    override fun onPause() {
+        Log.d("MainActivity", "onPause()")
+        super.onPause()
     }
 
     companion object { const val SECONDS = "Seconds" }
