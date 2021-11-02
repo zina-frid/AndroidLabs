@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">task2</string>
+    <string name="to_first">to first</string>
+    <string name="to_second">to second</string>
+    <string name="to_third">to third</string>
+    <string name="first_activity">First Activity</string>
+    <string name="second_activity">Second Activity</string>
+    <string name="third_activity">Third Activity</string>
+    <string name="about_activity">About Activity</string>
+    <string name="about_content">some text about activities</string>
+    <string name="to_about">to about</string>
+</resources>
