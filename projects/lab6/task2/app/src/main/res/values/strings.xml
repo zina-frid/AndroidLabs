@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">downloader_ex_se</string>
+    <string name="download">Click to download</string>
+    <string name="image">downloaded image</string>
+</resources>

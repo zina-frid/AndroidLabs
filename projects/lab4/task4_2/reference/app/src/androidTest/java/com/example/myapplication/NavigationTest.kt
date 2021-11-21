@@ -12,8 +12,7 @@ import androidx.test.espresso.Espresso.*
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import org.junit.Rule
 
@@ -139,6 +138,13 @@ class NavigationTest {
 
         onView(withId(R.id.fragment1)).check(matches(isDisplayed()))
         onView(withId(R.id.bnToSecond)).check(matches(isDisplayed()))
+
+        try {
+            pressBack()
+            assert(false)
+        } catch (NoActivityResumedException: Exception) {
+            assert(true)
+        }
     }
 
     @Test
@@ -151,13 +157,14 @@ class NavigationTest {
         activityRule.scenario.onActivity { activity ->
             activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         }
-
+        Thread.sleep(1000)
         onView(withId(R.id.bnToSecond)).check(matches(isDisplayed()))
         onView(withId(R.id.fragment1)).check(matches(isDisplayed()))
 
         activityRule.scenario.onActivity { activity ->
             activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
+        Thread.sleep(1000)
 
         onView(withId(R.id.bnToSecond)).perform(click())
 
@@ -169,6 +176,7 @@ class NavigationTest {
         activityRule.scenario.onActivity { activity ->
             activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         }
+        Thread.sleep(1000)
 
         onView(withId(R.id.fragment2)).check(matches(isDisplayed()))
         onView(withId(R.id.bnToFirst)).check(matches(isDisplayed()))
@@ -177,6 +185,7 @@ class NavigationTest {
         activityRule.scenario.onActivity { activity ->
             activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
+        Thread.sleep(1000)
 
         onView(withId(R.id.bnToThird)).perform(click())
 
@@ -188,6 +197,7 @@ class NavigationTest {
         activityRule.scenario.onActivity { activity ->
             activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         }
+        Thread.sleep(1000)
 
         onView(withId(R.id.fragment3)).check(matches(isDisplayed()))
         onView(withId(R.id.bnToFirst)).check(matches(isDisplayed()))
@@ -196,6 +206,7 @@ class NavigationTest {
         activityRule.scenario.onActivity { activity ->
             activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
+        Thread.sleep(1000)
 
         openAbout()
 
@@ -206,6 +217,7 @@ class NavigationTest {
         activityRule.scenario.onActivity { activity ->
             activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         }
+        Thread.sleep(1000)
 
         onView(withId(R.id.activity_about)).check(matches(isDisplayed()))
         onView(withId(R.id.tvAbout)).check(matches(isDisplayed()))
@@ -213,5 +225,6 @@ class NavigationTest {
         activityRule.scenario.onActivity { activity ->
             activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
+        Thread.sleep(1000)
     }
 }
