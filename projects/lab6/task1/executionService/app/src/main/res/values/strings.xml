@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">executionService</string>
+    <string name="seconds_elapsed">Seconds elapsed: </string>
+</resources>

@@ -33,34 +33,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onStart() {
-        Log.d("MainActivity", "onStart()")
-
+        active = true
+        secondsElapsed = sharedPref.getInt(SECONDS, 0)
         super.onStart()
     }
 
     override fun onStop() {
-        Log.d("MainActivity", "onStop()")
         active = false
         val editor = sharedPref.edit()
         editor.putInt(SECONDS, secondsElapsed)
         editor.apply()
-        Log.d("MainActivity", "Seconds = $secondsElapsed")
-        Log.d("MainActivity", "active == false")
         super.onStop()
-    }
-
-    override fun onResume() {
-        Log.d("MainActivity", "onResume()")
-        active = true
-        secondsElapsed = sharedPref.getInt(SECONDS, 0)
-        Log.d("MainActivity", "Seconds = $secondsElapsed")
-        Log.d("MainActivity", "active == true")
-        super.onResume()
-    }
-
-    override fun onPause() {
-        Log.d("MainActivity", "onPause()")
-        super.onPause()
     }
 
     companion object { const val SECONDS = "Seconds" }
