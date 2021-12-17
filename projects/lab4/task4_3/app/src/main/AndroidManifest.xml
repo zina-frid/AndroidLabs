@@ -11,9 +11,11 @@
         android:theme="@style/Theme.Task5">
         <activity
             android:name=".AboutActivity"
-            android:exported="true" />
+            android:exported="false"
+            android:parentActivityName=".NotMainActivity"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".NotMainActivity"
+            android:launchMode="singleTop"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

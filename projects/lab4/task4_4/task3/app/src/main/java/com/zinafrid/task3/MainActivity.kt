@@ -3,6 +3,7 @@ package com.zinafrid.task3
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import com.zinafrid.task3.databinding.ActivityFirstBinding
 
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.bnToSecond.setOnClickListener { toSecondAct() }
         binding.navView.setOnNavigationItemSelectedListener { toAboutAct(it) }
+        Log.d("CheckFlag", "OnCreate()")
     }
 
     private fun toSecondAct() {

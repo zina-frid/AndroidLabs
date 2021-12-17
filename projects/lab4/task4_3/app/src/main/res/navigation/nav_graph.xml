@@ -11,7 +11,7 @@
         android:label="FirstFragment"
         tools:layout="@layout/fragment_first" >
         <action
-            android:id="@+id/first_frag_to_second_frag"
+            android:id="@+id/to_second_frag"
             app:destination="@id/SecondFragment" />
     </fragment>
     <fragment
@@ -20,10 +20,10 @@
         android:label="SecondFragment"
         tools:layout="@layout/fragment_second" >
         <action
-            android:id="@+id/second_frag_to_third_frag"
+            android:id="@+id/to_third_frag"
             app:destination="@id/ThirdFragment" />
         <action
-            android:id="@+id/second_frag_to_first_frag"
+            android:id="@+id/to_first_frag"
             app:destination="@id/Firstfragment"
             app:popUpTo="@id/Firstfragment"
             app:popUpToInclusive="true" />
@@ -34,12 +34,12 @@
         android:label="ThirdFragment"
         tools:layout="@layout/fragment_third" >
         <action
-            android:id="@+id/third_frag_to_second_frag"
+            android:id="@+id/to_second_frag"
             app:destination="@id/SecondFragment"
             app:popUpTo="@id/SecondFragment"
             app:popUpToInclusive="true" />
         <action
-            android:id="@+id/third_frag_to_first_frag"
+            android:id="@+id/to_first_frag"
             app:destination="@id/Firstfragment"
             app:popUpTo="@id/Firstfragment"
             app:popUpToInclusive="true" />

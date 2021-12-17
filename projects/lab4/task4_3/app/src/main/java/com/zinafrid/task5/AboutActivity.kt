@@ -12,5 +12,10 @@ class AboutActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAboutBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
+//    override fun onSupportNavigateUp(): Boolean {
+//        finish()
+//        return true
+//    }
 }

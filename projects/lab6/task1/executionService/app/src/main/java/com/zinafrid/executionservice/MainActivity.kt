@@ -6,14 +6,13 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
+import java.util.concurrent.Future
 
 class MainActivity : AppCompatActivity() {
     var secondsElapsed: Int = 0
     lateinit var textSecondsElapsed: TextView
     private lateinit var sharedPref: SharedPreferences
-    private lateinit var executor: ExecutorService
+    private lateinit var background: Future<*>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,15 +24,15 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         secondsElapsed = sharedPref.getInt(SECONDS, 0)
         Log.d("MainActivity", "OnStart: seconds = $secondsElapsed")
-        executor = Executors.newFixedThreadPool(1)
-        executor.execute {
-                while (!executor.isShutdown) {
-                    Log.d("MainActivity", "${Thread.currentThread()} is iterating")
-                    Thread.sleep(1000)
-                    textSecondsElapsed.post {
-                        textSecondsElapsed.text = "${secondsElapsed++}"
-                    }
+        val executor = (applicationContext as MainApplication).threadPool
+        background = executor.submit {
+            while (!executor.isShutdown) {
+                Log.d("MainActivity", "${Thread.currentThread()} is iterating")
+                Thread.sleep(1000)
+                textSecondsElapsed.post {
+                    textSecondsElapsed.text = "${secondsElapsed++}"
                 }
+            }
         }
         super.onStart()
     }
@@ -43,9 +42,11 @@ class MainActivity : AppCompatActivity() {
         editor.putInt(SECONDS, secondsElapsed)
         editor.apply()
         Log.d("MainActivity", "OnStop: seconds = $secondsElapsed")
-        executor.shutdown()
+        background.cancel(true)
         super.onStop()
     }
 
-    companion object { const val SECONDS = "Seconds" }
+    companion object {
+        const val SECONDS = "Seconds"
+    }
 }

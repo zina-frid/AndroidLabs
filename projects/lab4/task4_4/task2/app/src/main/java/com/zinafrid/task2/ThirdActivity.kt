@@ -18,6 +18,7 @@ class ThirdActivity : AppCompatActivity() {
         binding.bnToFirst.setOnClickListener { toFirstAct() }
         binding.bnToSecond.setOnClickListener { toSecondAct() }
         binding.navView.setOnNavigationItemSelectedListener { toAboutAct(it) }
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun toFirstAct() {

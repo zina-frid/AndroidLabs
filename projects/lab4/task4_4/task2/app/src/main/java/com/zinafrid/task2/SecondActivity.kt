@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import com.zinafrid.task2.databinding.ActivitySecondBinding
 
@@ -18,6 +19,7 @@ class SecondActivity : AppCompatActivity() {
         binding.bnToFirst.setOnClickListener { toFirstAct() }
         binding.bnToThird.setOnClickListener { toThirdAct() }
         binding.navView.setOnNavigationItemSelectedListener { toAboutAct(it) }
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun toFirstAct() {
@@ -26,6 +28,9 @@ class SecondActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        Log.d("SecondActivity", "onActivityResult: requestCode = $requestCode")
+        Log.d("SecondActivity", "onActivityResult: resultCode = $resultCode")
+        Log.d("SecondActivity", "onActivityResult: resultOk = ${Activity.RESULT_OK}")
         if (requestCode == REQUEST_FROM_THIRD && resultCode == Activity.RESULT_OK) {
             finish()
         }
