@@ -25,11 +25,10 @@ class MainActivity : AppCompatActivity() {
             while (isActive) {
                 Log.d("MainActivity", "Coroutine is working")
                 delay(1000)
-                textSecondsElapsed.post {
-                    textSecondsElapsed.text = "${secondsElapsed++}"
-                }
+                textSecondsElapsed.text = "${secondsElapsed++}"
 
             }
+
         }
 
         job.invokeOnCompletion {
@@ -51,5 +50,7 @@ class MainActivity : AppCompatActivity() {
         super.onStop()
     }
 
-    companion object { const val SECONDS = "Seconds" }
+    companion object {
+        const val SECONDS = "Seconds"
+    }
 }

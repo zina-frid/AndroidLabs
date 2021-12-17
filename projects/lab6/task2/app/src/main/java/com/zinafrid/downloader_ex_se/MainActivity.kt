@@ -1,6 +1,7 @@
 package com.zinafrid.downloader_ex_se
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.viewModels
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
@@ -9,7 +10,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var imageView: ImageView
     lateinit var btn : Button
-    val viewModel = MainViewModel()
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

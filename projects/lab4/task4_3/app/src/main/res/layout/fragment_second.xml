@@ -53,17 +53,6 @@
                 android:text="@string/to_third"
                 android:textSize="20sp" />
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/nav_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/my"
-                app:itemTextColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:menu="@menu/bottom_nav_menu" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>
